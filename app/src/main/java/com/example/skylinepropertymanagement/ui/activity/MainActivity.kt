@@ -1,11 +1,11 @@
 package com.example.skylinepropertymanagement.ui.activity
 
 import android.content.Intent
-import android.content.Intent.*
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import com.example.skylinepropertymanagement.R
+import com.example.skylinepropertymanagement.ui.activity.auth.LoginActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,8 +21,8 @@ class MainActivity : AppCompatActivity() {
         var handler = Handler()
 
         handler.postDelayed({
-            intent.flags = FLAG_ACTIVITY_CLEAR_TOP
             startActivity(intent)
+            finish()
         }, 3000)
 
     }

@@ -8,6 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 interface ApiClient {
 
     //Network call methods go here
+    //Add the Base URL in the Config File
 
 
     companion object {
