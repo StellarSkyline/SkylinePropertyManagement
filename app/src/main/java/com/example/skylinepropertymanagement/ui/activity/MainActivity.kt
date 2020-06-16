@@ -1,4 +1,4 @@
-package com.example.skylinepropertymanagement.data.activity
+package com.example.skylinepropertymanagement.ui.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
