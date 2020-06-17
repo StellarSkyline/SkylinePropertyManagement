@@ -5,5 +5,5 @@ data class User(
     var email:String = "",
     var mobile:String = "",
     var password:String = "",
-    var type:Boolean = true
+    var type:String = "landlord"
 )

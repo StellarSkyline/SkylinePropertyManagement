@@ -1,5 +1,6 @@
 package com.example.skylinepropertymanagement.ui.activity.auth
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
@@ -58,6 +59,10 @@ class RegisterActivity : AppCompatActivity() {
                 true -> switch_user.text = "Landlord"
                 false -> switch_user.text = "Tennant"
             }
+        })
+
+        viewModel.jumpActivity.observe(this,Observer<Boolean>{ t->
+            startActivity(Intent(this,LoginActivity::class.java))
         })
 
     }
