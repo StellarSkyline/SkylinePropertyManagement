@@ -28,22 +28,22 @@
             android:contentDescription="TODO" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/text_layout_email"
+            android:id="@+id/text_layout_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="76dp"
+            android:layout_marginTop="70dp"
             android:textColorHint="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView2">
+            app:layout_constraintTop_toBottomOf="@+id/switch_user">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edit_text_email"
-                android:text="@={AuthViewModel.user.email}"
+                android:id="@+id/edit_text_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:hint="@string/enter_email"
+                android:text="@={AuthViewModel.user.email}"
                 android:textColor="#FFFFFF"
                 android:textColorHint="#FFFFFF" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -58,7 +58,7 @@
             app:layout_constraintEnd_toStartOf="@+id/button"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_layout_email">
+            app:layout_constraintTop_toBottomOf="@+id/text_layout_name">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edit_text_password"
@@ -84,20 +84,19 @@
             android:textColor="#FFFFFF"
             app:layout_constraintBottom_toBottomOf="@+id/text_layout_password"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_layout_email" />
+            app:layout_constraintTop_toBottomOf="@+id/text_layout_name" />
 
         <Switch
-            android:onClick="@{AuthViewModel::switchToggled}"
             android:id="@+id/switch_user"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="32dp"
+            android:onClick="@{AuthViewModel::switchToggled}"
             android:text="User"
             android:textColor="#FFFFFF"
             android:textOff="Renter"
             android:textOn="Landlord"
             android:textSize="20dp"
-            app:layout_constraintBottom_toTopOf="@+id/text_layout_email"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView2" />
@@ -113,6 +112,19 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_layout_password" />
+
+        <TextView
+            android:id="@+id/text_view_forgot_password"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="Forgot Password"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_register" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

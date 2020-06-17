@@ -10,7 +10,6 @@ import com.example.skylinepropertymanagement.R
 import com.example.skylinepropertymanagement.app.toast
 import com.example.skylinepropertymanagement.databinding.ActivityLoginBinding
 import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.activity_login.view.*
 
 class LoginActivity : AppCompatActivity() {
 
@@ -35,13 +34,13 @@ class LoginActivity : AppCompatActivity() {
 
         viewModel.loginResult.observe(this, object:Observer<String>{
             override fun onChanged(t: String?) {
-                text_layout_email.isErrorEnabled = false
+                text_layout_name.isErrorEnabled = false
                 text_layout_password.isErrorEnabled = false
                 when(t) {
-                    "email" -> {text_layout_email.error = "Email is required"}
+                    "email" -> {text_layout_name.error = "Email is required"}
                     "password" ->{text_layout_password.error = "Password is required"}
                     "success" -> {
-                        text_layout_email.isErrorEnabled = false
+                        text_layout_name.isErrorEnabled = false
                         text_layout_password.isErrorEnabled = false
                         applicationContext.toast("Login Success, Check Logcat")}
                 }

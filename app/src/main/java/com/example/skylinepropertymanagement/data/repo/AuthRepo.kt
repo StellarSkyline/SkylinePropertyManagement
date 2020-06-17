@@ -12,4 +12,9 @@ class AuthRepo {
         App.instance.log(user.value.toString())
 
     }
+
+    //sample Register
+    fun register(user:MutableLiveData<User>) {
+        App.instance.log(user.value.toString())
+    }
 }

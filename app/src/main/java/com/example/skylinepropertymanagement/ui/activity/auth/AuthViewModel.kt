@@ -43,4 +43,27 @@ class AuthViewModel:ViewModel() {
 
     }
 
+    fun onRegisterButtonClicked(view: View) {
+        when {
+            user.value?.name.isNullOrEmpty() -> {
+                loginResult.value = "name"
+                return
+            }
+            user.value?.email.isNullOrEmpty() -> {
+                loginResult.value = "email"
+                return
+            }
+            user.value?.mobile.isNullOrEmpty() -> {
+                loginResult.value = "mobile"
+                return
+            }
+            user.value?.password.isNullOrEmpty() -> {
+                loginResult.value = "password"
+                return
+            }
+        }
+        repo.register(user)
+        loginResult.value = "success"
+    }
+
 }
