@@ -2,6 +2,7 @@ package com.example.skylinepropertymanagement.data.network
 
 import com.example.skylinepropertymanagement.app.Config
 import com.example.skylinepropertymanagement.data.model.LoginResponse
+import com.example.skylinepropertymanagement.data.model.PropertyResponse
 import com.google.gson.GsonBuilder
 import io.reactivex.Observable
 import retrofit2.Retrofit
@@ -17,6 +18,9 @@ interface ApiClient {
 
     @GET("pro_mgt_login.php")
     fun login(@Query("email")email:String, @Query("password")password:String):Observable<LoginResponse>
+
+    @GET("property.php")
+    fun properties(@Query("userid")userId:String, @Query("usertype")userType:String):Observable<PropertyResponse>
 
     companion object {
         operator fun invoke():ApiClient {

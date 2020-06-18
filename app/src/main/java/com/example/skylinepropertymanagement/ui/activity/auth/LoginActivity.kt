@@ -47,12 +47,7 @@ class LoginActivity : AppCompatActivity() {
             }
         })
 
-        viewModel.typeSwitch.observe(this, Observer<Boolean> { t ->
-            when(t) {
-                true -> switch_user.text = "Landlord"
-                false -> switch_user.text = "Tennant"
-            }
-        })
+
 
         text_view_register.setOnClickListener {
             startActivity(Intent(this,RegisterActivity::class.java))

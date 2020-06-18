@@ -17,6 +17,18 @@ class SessionManager() {
         editor.commit()
     }
 
+    fun getEmail():String {
+        return sharePreference.getString("userEmail",null)!!
+    }
+
+    fun getType():String {
+        return sharePreference.getString("userType",null)!!
+    }
+
+    fun getUserId():String {
+        return sharePreference.getString("userId",null)!!
+    }
+
     companion object {
         val sharePreference by lazy {
             App.instance.getSharedPreferences(Config.FILE_NAME,Context.MODE_PRIVATE)
