@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    android:checkableBehavior="single">
+
+    <item
+        android:title="Alert"
+        android:id="@+id/nav_alert"
+        android:icon="@drawable/ic_alert"
+        android:iconTintMode="src_atop"/>
+    <item
+        android:title="Documents"
+        android:id="@+id/nav_document"/>
+    <item
+        android:title="Meetings"
+        android:id="@+id/nav_meetings"/>
+
+    <group
+        android:id="@+id/group_landlord">
+        <item
+            android:title="Properties"
+            android:id="@+id/nav_properties"/>
+        <item
+            android:title="Tennants"
+            android:id="@+id/nav_tennant"/>
+        <item
+            android:title="Collect Rent"
+            android:id="@+id/nav_collect" />
+
+    </group>
+
+    <group
+        android:id="@+id/group_tennant">
+        <item
+            android:title="Payment"
+            android:id="@+id/nav_payment"/>
+
+        <item
+            android:title="Trip"
+            android:id="@+id/nav_trip"/>
+
+        <item
+            android:title="Vendor"
+            android:id="@+id/nav_vendor"
+            />
+    </group>
+
+</menu>

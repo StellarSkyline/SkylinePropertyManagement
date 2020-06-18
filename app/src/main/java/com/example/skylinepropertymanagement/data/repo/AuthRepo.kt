@@ -3,6 +3,7 @@ package com.example.skylinepropertymanagement.data.repo
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.skylinepropertymanagement.app.App
+import com.example.skylinepropertymanagement.app.Jump
 import com.example.skylinepropertymanagement.app.log
 import com.example.skylinepropertymanagement.app.toast
 import com.example.skylinepropertymanagement.data.SessionManager
@@ -24,6 +25,7 @@ class AuthRepo {
                     "success" -> {
                         //store in shared preference
                         SessionManager().addUser(useremail = it.useremail, userid = it.userid,userType = it.usertype,api = it.appapikey)
+                        Jump.JUMP_TRIGGER.value = true
                         App.instance.log(it.toString())
                     }
                     "[Email is not register]" -> {

@@ -25,6 +25,8 @@ class AuthViewModel:ViewModel() {
         x
     }
 
+
+
     fun loginButtonClicked(view: View) {
         if(user.value?.email.isNullOrEmpty()) {
             loginResult.value = "email"
