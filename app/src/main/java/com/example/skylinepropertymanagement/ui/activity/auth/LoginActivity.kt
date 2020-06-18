@@ -42,7 +42,7 @@ class LoginActivity : AppCompatActivity() {
                     "success" -> {
                         text_layout_name.isErrorEnabled = false
                         text_layout_password.isErrorEnabled = false
-                        applicationContext.toast("Login Success, Check Logcat")}
+                        }
                 }
             }
         })

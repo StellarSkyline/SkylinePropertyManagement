@@ -19,7 +19,6 @@ class AuthViewModel:ViewModel() {
 
     val loginResult by lazy {MutableLiveData<String>()}
     val typeSwitch by lazy {MutableLiveData<Boolean>()}
-    val jumpActivity by lazy {MutableLiveData<Boolean>()}
     val user by lazy{
         val x = MutableLiveData<User>()
         x.value = User()
@@ -36,7 +35,6 @@ class AuthViewModel:ViewModel() {
         }
 
         repo.login(user)
-
         loginResult.value = "success"
 
     }
@@ -70,7 +68,6 @@ class AuthViewModel:ViewModel() {
         }
         repo.register(user)
         loginResult.value = "success"
-        jumpActivity.value = true
     }
 
 }

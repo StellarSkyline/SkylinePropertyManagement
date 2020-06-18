@@ -14,7 +14,7 @@ import retrofit2.http.Query
 interface ApiClient {
 
     @GET("pro_mgt_reg.php")
-    fun register(@Query("email")email:String, @Query("landlord_email")landEmail:String, @Query("password")password:String, @Query("account_for")account:String): Observable<String>
+    fun register(@Query("email")email:String, @Query("landlord_email")landEmail:String, @Query("password")password:String, @Query("account_for")account:String): Observable<Any>
 
     @GET("pro_mgt_login.php")
     fun login(@Query("email")email:String, @Query("password")password:String):Observable<LoginResponse>

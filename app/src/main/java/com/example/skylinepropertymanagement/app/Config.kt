@@ -4,5 +4,6 @@ class Config {
 
     companion object {
         val BASE_URL = "https://rjtmobile.com/aamir/property-mgmt/"
+        val FILE_NAME = "UserPreference"
     }
 }

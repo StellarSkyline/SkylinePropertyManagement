@@ -47,9 +47,7 @@ class RegisterActivity : AppCompatActivity() {
                     text_layout_email.isErrorEnabled = false
                     text_layout_mobile.isErrorEnabled = false
                     text_layout_password.isErrorEnabled = false
-
-                    applicationContext.toast("Register Success, Check Logcat")
-
+                    startActivity(Intent(this,LoginActivity::class.java))
                 }
             }
         })
@@ -61,9 +59,6 @@ class RegisterActivity : AppCompatActivity() {
             }
         })
 
-        viewModel.jumpActivity.observe(this,Observer<Boolean>{ t->
-            startActivity(Intent(this,LoginActivity::class.java))
-        })
 
     }
 }
