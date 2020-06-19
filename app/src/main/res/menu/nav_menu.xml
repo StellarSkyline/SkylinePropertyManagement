@@ -1,28 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:checkableBehavior="single">
 
     <item
         android:title="Alert"
-        android:id="@+id/nav_alert"/>
+        android:id="@+id/nav_alert"
+        android:icon="@drawable/ic_alert"/>
     <item
         android:title="Documents"
-        android:id="@+id/nav_document"/>
+        android:id="@+id/nav_document"
+        android:icon="@drawable/ic_documents"/>
     <item
         android:title="Meetings"
-        android:id="@+id/nav_meetings"/>
+        android:id="@+id/nav_meetings"
+        android:icon="@drawable/ic_meetings"/>
 
     <group
         android:id="@+id/group_landlord">
         <item
             android:title="Properties"
-            android:id="@+id/nav_properties"/>
+            android:id="@+id/nav_properties"
+            android:icon="@drawable/ic_properties"/>
         <item
             android:title="Tennants"
-            android:id="@+id/nav_tennant"/>
+            android:id="@+id/nav_tennant"
+            android:icon="@drawable/ic_tenants"/>
         <item
             android:title="Collect Rent"
-            android:id="@+id/nav_collect" />
+            android:id="@+id/nav_collect"
+            android:icon="@drawable/ic_collect"/>
 
     </group>
 
@@ -30,16 +37,18 @@
         android:id="@+id/group_tennant">
         <item
             android:title="Payment"
-            android:id="@+id/nav_payment"/>
+            android:id="@+id/nav_payment"
+            android:icon="@drawable/ic_payment"/>
 
         <item
             android:title="Trip"
-            android:id="@+id/nav_trip"/>
+            android:id="@+id/nav_trip"
+            android:icon="@drawable/ic_trip"/>
 
         <item
             android:title="Vendor"
             android:id="@+id/nav_vendor"
-            />
+            android:icon="@drawable/ic_vendor"/>
     </group>
 
 </menu>

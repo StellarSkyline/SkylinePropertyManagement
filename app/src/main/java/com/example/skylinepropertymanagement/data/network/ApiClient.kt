@@ -4,7 +4,9 @@ import com.example.skylinepropertymanagement.app.Config
 import com.example.skylinepropertymanagement.data.model.LoginResponse
 import com.example.skylinepropertymanagement.data.model.PropertyResponse
 import com.google.gson.GsonBuilder
+import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import io.reactivex.Observable
+import kotlinx.coroutines.Deferred
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -26,6 +28,7 @@ interface ApiClient {
         operator fun invoke():ApiClient {
             return Retrofit.Builder()
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addCallAdapterFactory(CoroutineCallAdapterFactory())
                 .addConverterFactory(GsonConverterFactory.create(GsonBuilder().setLenient().create()))
                 .baseUrl(Config.BASE_URL)
                 .build()

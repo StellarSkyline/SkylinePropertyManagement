@@ -33,6 +33,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
+
         init()
     }
 
@@ -43,9 +44,12 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         drawer = drawer_layout
         navView = nav_view
         headerView = navView.getHeaderView(0)
+        navView.itemIconTintList = null
+
 
         headerView.text_view_email.text = sm.getEmail()
         headerView.text_view_type.text = sm.getType()
+
 
         var toggle = ActionBarDrawerToggle(this,drawer,toolbar,0,0)
         drawer.addDrawerListener(toggle)
@@ -56,7 +60,8 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
-            R.id.nav_alert -> { navController.navigate(R.id.action_homeFragment_to_alertFragment)}
+            R.id.nav_alert -> { navController.navigate(R.id.action_global_alertFragment)}
+            R.id.nav_document -> {navController.navigate(R.id.action_global_documentsFragment)}
         }
         return true
     }
@@ -65,6 +70,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         if(drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START)
         } else {
+
             super.onBackPressed()
         }
     }
