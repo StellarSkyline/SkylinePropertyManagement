@@ -1,6 +1,7 @@
 package com.example.skylinepropertymanagement.ui.fragment
 
 import android.view.View
+import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -14,15 +15,16 @@ import kotlinx.coroutines.withContext
 
 class FragmentViewModel:ViewModel() {
     val repo = FragmentRepo()
+    //val propertyData by lazy {MutableLiveData<List<Property>>()}
 
-    val propertyData by lazy {MutableLiveData<List<Property>>()}
+//    init{
+//        propertyData.addSource(repo.propStream,{it->it})
+//    }
 
 
 
     fun loadProperties() {
-        propertyData.value = repo.getProperties().Property
-
-
+        repo.getProperties()
     }
 
 

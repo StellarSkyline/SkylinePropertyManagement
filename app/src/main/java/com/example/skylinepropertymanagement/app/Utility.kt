@@ -8,7 +8,7 @@ import androidx.appcompat.widget.Toolbar
 import kotlinx.android.synthetic.main.app_bar.*
 
 fun Context.log(message:String) {
-    Log.d("STLog", message)
+    Log.d("STLog", "ST` ${message}" )
 }
 
 fun Context.toast(message:String) {

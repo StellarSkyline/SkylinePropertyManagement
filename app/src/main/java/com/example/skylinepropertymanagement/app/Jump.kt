@@ -1,9 +1,9 @@
 package com.example.skylinepropertymanagement.app
 
 import androidx.lifecycle.MutableLiveData
+import com.example.skylinepropertymanagement.data.model.Property
 
-class Jump {
-    companion object {
-        val JUMP_TRIGGER by lazy{MutableLiveData<Boolean>()}
-    }
+object Jump {
+    val JUMP_TRIGGER by lazy{MutableLiveData<Boolean>()}
+    val propertyData by lazy{ MutableLiveData<List<Property>>()}
 }

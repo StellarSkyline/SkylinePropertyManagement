@@ -4,30 +4,26 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.skylinepropertymanagement.R
+import com.example.skylinepropertymanagement.app.App
+import com.example.skylinepropertymanagement.app.Jump
+import com.example.skylinepropertymanagement.app.log
+import com.example.skylinepropertymanagement.data.adapter.AdapterProperties
+import com.example.skylinepropertymanagement.data.model.Property
 //import com.example.skylinepropertymanagement.databinding.FragmentHomeBinding
 import kotlinx.android.synthetic.main.fragment_home.*
-import okhttp3.Response
 
 class HomeFragment: Fragment() {
-
-//    //initalize global variables
-//    lateinit var mBinding:FragmentHomeBinding
-    //lateinit var viewModel:FragmentViewModel
-
     val viewModel:FragmentViewModel by viewModels()
+    var mList:List<Property>? = emptyList()
+    lateinit var adapter: AdapterProperties
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-//        //intilze data binding - this is replaced with requireActivity() if in a fragment
-//        mBinding = DataBindingUtil.setContentView(requireActivity(), R.layout.fragment_home)
-        //viewModel = ViewModelProviders.of(requireActivity()).get(FragmentViewModel::class.java)
-//        mBinding.fragmentViewModel = viewModel
-//        mBinding.lifecycleOwner = this
+
 
         return inflater.inflate(R.layout.fragment_home,container, false)
     }
@@ -35,8 +31,27 @@ class HomeFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.loadProperties()
+        adapter = AdapterProperties(activity?.applicationContext!!)
 
+        recycler_view.layoutManager = LinearLayoutManager(activity?.applicationContext)
+        recycler_view.adapter = adapter
+
+        viewModel.repo.getProperties()
+
+        viewModel.repo.propertyData.observe(viewLifecycleOwner, Observer{
+            mList = it!!
+                App.instance.log(mList.toString())
+                adapter.setData(mList!!)
+        })
+
+//        viewModel.propertyData.observe(viewLifecycleOwner,
+//            Observer<List<Property>> { t ->
+//                mList = t!!
+//                App.instance.log(mList.toString())
+//                adapter.setData(mList!!)
+//
+//
+//            })
 
 
 
@@ -45,3 +60,15 @@ class HomeFragment: Fragment() {
 
 
 }
+
+//set up data binding
+
+//    //initalize global variables
+//    lateinit var mBinding:FragmentHomeBinding
+//lateinit var viewModel:FragmentViewModel
+
+//        //intilze data binding - this is replaced with requireActivity() if in a fragment
+//        mBinding = DataBindingUtil.setContentView(requireActivity(), R.layout.fragment_home)
+//viewModel = ViewModelProviders.of(requireActivity()).get(FragmentViewModel::class.java)
+//        mBinding.fragmentViewModel = viewModel
+//        mBinding.lifecycleOwner = this
