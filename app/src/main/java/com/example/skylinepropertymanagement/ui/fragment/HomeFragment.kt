@@ -24,7 +24,6 @@ class HomeFragment: Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-
         return inflater.inflate(R.layout.fragment_home,container, false)
     }
 
@@ -53,9 +52,7 @@ class HomeFragment: Fragment() {
 
 //set up data binding
 
-//    //initalize global variables
-//    lateinit var mBinding:FragmentHomeBinding
-//lateinit var viewModel:FragmentViewModel
+
 
 //        //intilze data binding - this is replaced with requireActivity() if in a fragment
 //        mBinding = DataBindingUtil.setContentView(requireActivity(), R.layout.fragment_home)

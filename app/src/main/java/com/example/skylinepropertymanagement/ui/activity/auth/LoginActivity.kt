@@ -17,6 +17,7 @@ class LoginActivity : AppCompatActivity() {
 
     lateinit var mBinding: ActivityLoginBinding
     lateinit var viewModel:AuthViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
