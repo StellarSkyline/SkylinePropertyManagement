@@ -35,6 +35,7 @@ class AdapterProperties(var mContext:Context):RecyclerView.Adapter<AdapterProper
             itemView.text_view_address.text = item.propertyaddress
             itemView.text_view_city.text = item.propertycity
             itemView.text_view_price.text = item.propertypurchaseprice
+            itemView.image_view_house.setImageResource(R.drawable.img_house)
 
         }
 

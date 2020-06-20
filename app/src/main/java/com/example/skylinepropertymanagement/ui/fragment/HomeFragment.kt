@@ -44,16 +44,6 @@ class HomeFragment: Fragment() {
                 adapter.setData(mList!!)
         })
 
-//        viewModel.propertyData.observe(viewLifecycleOwner,
-//            Observer<List<Property>> { t ->
-//                mList = t!!
-//                App.instance.log(mList.toString())
-//                adapter.setData(mList!!)
-//
-//
-//            })
-
-
 
     }
 

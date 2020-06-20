@@ -67,10 +67,12 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     override fun onBackPressed() {
+        navController.navigate(R.id.action_global_homeFragment)
         if(drawer.isDrawerOpen(GravityCompat.START)) {
+
             drawer.closeDrawer(GravityCompat.START)
         } else {
-
+            navController.navigate(R.id.action_global_homeFragment)
             super.onBackPressed()
         }
     }

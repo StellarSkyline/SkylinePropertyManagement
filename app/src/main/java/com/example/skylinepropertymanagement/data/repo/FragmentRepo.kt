@@ -22,7 +22,7 @@ class FragmentRepo {
     fun getProperties() {
         //change userID to sm.getUserId()
         //change userType to sm.getUserType()
-        var request = ApiClient.invoke().properties(userId ="3", userType = "landlord")
+        var request = ApiClient.invoke().getAllProperties()
 
         request.subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

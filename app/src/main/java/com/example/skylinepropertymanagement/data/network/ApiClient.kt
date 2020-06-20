@@ -24,6 +24,9 @@ interface ApiClient {
     @GET("property.php")
     fun properties(@Query("userid")userId:String, @Query("usertype")userType:String):Observable<PropertyResponse>
 
+    @GET("pro_mgt_property_all.php ")
+    fun getAllProperties():Observable<PropertyResponse>
+
     companion object {
         operator fun invoke():ApiClient {
             return Retrofit.Builder()
