@@ -6,12 +6,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.skylinepropertymanagement.R
 import com.example.skylinepropertymanagement.app.App
 import com.example.skylinepropertymanagement.app.log
 import com.example.skylinepropertymanagement.app.toast
+import com.example.skylinepropertymanagement.data.adapter.AdapterImage
+import com.example.skylinepropertymanagement.data.adapter.AdapterProperties
 import com.example.skylinepropertymanagement.databinding.FragmentDocumentBinding
 import kotlinx.android.synthetic.main.fragment_document.*
 
@@ -19,7 +23,9 @@ class DocumentsFragment: Fragment() {
 
         //initalize global variables
     lateinit var mBinding:FragmentDocumentBinding
-    val viewModel: FragmentViewModel by viewModels()
+    val viewModel: FragmentViewModel by activityViewModels()
+    lateinit var adapter:AdapterImage
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,6 +46,15 @@ class DocumentsFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        adapter = AdapterImage(activity?.applicationContext!!)
+
+        recycler_view.layoutManager = LinearLayoutManager(activity?.applicationContext!!, LinearLayoutManager.HORIZONTAL, false)
+        recycler_view.adapter = adapter
+
+        viewModel.photoList.observe(viewLifecycleOwner, Observer {
+            adapter.setData(it)
+        })
+
         viewModel.inputVal.observe(viewLifecycleOwner, Observer {
             when(it) {
                 "name" -> {text_layout_name.error = "Document name required"}
@@ -49,6 +64,8 @@ class DocumentsFragment: Fragment() {
                 }
             }
         })
+
+
 
     }
 }

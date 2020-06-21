@@ -2,6 +2,7 @@ package com.example.skylinepropertymanagement.data.repo
 
 import androidx.lifecycle.MutableLiveData
 import com.example.skylinepropertymanagement.app.App
+import com.example.skylinepropertymanagement.app.Jump
 import com.example.skylinepropertymanagement.app.log
 import com.example.skylinepropertymanagement.data.SessionManager
 import com.example.skylinepropertymanagement.data.database.DB
@@ -42,6 +43,7 @@ class FragmentRepo {
 
     fun saveDocument(document:MutableLiveData<Document>) {
         db.Dao().addDocument(SavedDocuments(name = document.value!!.name,type= document.value!!.type))
+
 
     }
 

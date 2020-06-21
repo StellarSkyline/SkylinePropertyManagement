@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,7 +18,7 @@ import com.example.skylinepropertymanagement.data.model.Property
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment: Fragment() {
-    val viewModel: FragmentViewModel by viewModels()
+    val viewModel: FragmentViewModel by activityViewModels()
     var mList:List<Property>? = emptyList()
     lateinit var adapter: AdapterProperties
 

@@ -5,5 +5,4 @@ import com.example.skylinepropertymanagement.data.model.Property
 
 object Jump {
     val JUMP_TRIGGER by lazy{MutableLiveData<Boolean>()}
-    val propertyData by lazy{ MutableLiveData<List<Property>>()}
 }
