@@ -8,7 +8,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.skylinepropertymanagement.R
 import com.example.skylinepropertymanagement.app.Jump
-import com.example.skylinepropertymanagement.app.toast
 import com.example.skylinepropertymanagement.databinding.ActivityLoginBinding
 import com.example.skylinepropertymanagement.ui.activity.HomeActivity
 import kotlinx.android.synthetic.main.activity_login.*
@@ -16,7 +15,7 @@ import kotlinx.android.synthetic.main.activity_login.*
 class LoginActivity : AppCompatActivity() {
 
     lateinit var mBinding: ActivityLoginBinding
-    lateinit var viewModel:AuthViewModel
+    lateinit var viewModel: AuthViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
 

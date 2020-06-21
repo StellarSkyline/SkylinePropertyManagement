@@ -1,13 +1,10 @@
 package com.example.skylinepropertymanagement.ui.activity.auth
 
-import android.content.Intent
 import android.view.View
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.skylinepropertymanagement.app.App
 import com.example.skylinepropertymanagement.data.model.User
 import com.example.skylinepropertymanagement.data.repo.AuthRepo
-import com.example.skylinepropertymanagement.ui.activity.MainActivity
 
 class AuthViewModel:ViewModel() {
     var name:String? = null

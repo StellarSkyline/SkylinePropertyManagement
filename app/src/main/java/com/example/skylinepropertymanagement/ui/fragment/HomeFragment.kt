@@ -10,7 +10,6 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.skylinepropertymanagement.R
 import com.example.skylinepropertymanagement.app.App
-import com.example.skylinepropertymanagement.app.Jump
 import com.example.skylinepropertymanagement.app.log
 import com.example.skylinepropertymanagement.data.adapter.AdapterProperties
 import com.example.skylinepropertymanagement.data.model.Property
@@ -18,7 +17,7 @@ import com.example.skylinepropertymanagement.data.model.Property
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment: Fragment() {
-    val viewModel:FragmentViewModel by viewModels()
+    val viewModel: FragmentViewModel by viewModels()
     var mList:List<Property>? = emptyList()
     lateinit var adapter: AdapterProperties
 

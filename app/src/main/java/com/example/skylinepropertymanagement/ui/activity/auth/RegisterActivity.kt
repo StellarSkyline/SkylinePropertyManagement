@@ -7,9 +7,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.skylinepropertymanagement.R
-import com.example.skylinepropertymanagement.app.toast
 import com.example.skylinepropertymanagement.databinding.ActivityRegisterBinding
-import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_register.*
 import kotlinx.android.synthetic.main.activity_register.switch_user
 import kotlinx.android.synthetic.main.activity_register.text_layout_name
@@ -17,7 +15,7 @@ import kotlinx.android.synthetic.main.activity_register.text_layout_password
 
 class RegisterActivity : AppCompatActivity() {
     lateinit var mBinding:ActivityRegisterBinding
-    lateinit var viewModel:AuthViewModel
+    lateinit var viewModel: AuthViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_register)
