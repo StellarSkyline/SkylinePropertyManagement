@@ -2,17 +2,20 @@ package com.example.skylinepropertymanagement.ui.activity
 
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.MenuItem
 import android.view.View
+import androidx.activity.viewModels
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
@@ -21,6 +24,7 @@ import com.example.skylinepropertymanagement.app.Jump
 import com.example.skylinepropertymanagement.app.onlyNew
 import com.example.skylinepropertymanagement.app.setupToolbar
 import com.example.skylinepropertymanagement.data.SessionManager
+import com.example.skylinepropertymanagement.ui.fragment.FragmentViewModel
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar.*
@@ -30,6 +34,7 @@ import kotlinx.android.synthetic.main.nav_header.view.*
 import java.util.jar.Manifest
 
 class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+    val viewModel: FragmentViewModel by viewModels()
     private val CAMERA_REQUEST_CODE = 100
     private lateinit var drawer:DrawerLayout
     private lateinit var navView:NavigationView
@@ -104,5 +109,17 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.CAMERA), CAMERA_REQUEST_CODE)
         } else {openCamera()}
 
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        when(requestCode) {
+            CAMERA_REQUEST_CODE -> {
+                var item = data!!.extras!!.get("data") as Bitmap
+                viewModel.photoList.value?.add(item)
+                viewModel.photoList.value = viewModel.photoList.value
+            }
+        }
     }
 }

@@ -1,5 +1,6 @@
 package com.example.skylinepropertymanagement.ui.fragment
 
+import android.graphics.Bitmap
 import android.view.View
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -9,6 +10,15 @@ import com.example.skylinepropertymanagement.data.repo.FragmentRepo
 
 class FragmentViewModel:ViewModel() {
     val repo = FragmentRepo()
+//    var photoList:ArrayList<Bitmap> = ArrayList()
+//    val photoList by lazy {MutableLiveData<ArrayList<Bitmap>>()}
+
+    val photoList by lazy {
+        val x = MutableLiveData<ArrayList<Bitmap>>()
+        x.value = ArrayList()
+        x
+    }
+
     val inputVal by lazy {MutableLiveData<String>()}
 
     val documentData by lazy {
