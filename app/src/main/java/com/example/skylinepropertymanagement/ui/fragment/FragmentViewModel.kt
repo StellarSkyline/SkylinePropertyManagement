@@ -38,6 +38,7 @@ class FragmentViewModel:ViewModel() {
         }
 
         //call repo here
+        documentData.value?.image =photoList.value.toString()
         repo.saveDocument(documentData)
         inputVal.value = "success"
     }

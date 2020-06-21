@@ -8,6 +8,7 @@ data class SavedDocuments(
     @PrimaryKey(autoGenerate = true)
     var id:Int = 0,
     var name:String,
-    var type:String
+    var type:String,
+    var image:String
 
 )

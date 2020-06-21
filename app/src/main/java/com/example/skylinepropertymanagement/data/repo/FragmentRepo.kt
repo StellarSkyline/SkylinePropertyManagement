@@ -42,7 +42,7 @@ class FragmentRepo {
     }
 
     fun saveDocument(document:MutableLiveData<Document>) {
-        db.Dao().addDocument(SavedDocuments(name = document.value!!.name,type= document.value!!.type))
+        db.Dao().addDocument(SavedDocuments(name = document.value!!.name,type= document.value!!.type, image = document.value!!.image))
 
 
     }
