@@ -3,6 +3,7 @@ package com.example.skylinepropertymanagement.ui.fragment
 import android.view.View
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.skylinepropertymanagement.app.Jump
 import com.example.skylinepropertymanagement.data.model.Document
 import com.example.skylinepropertymanagement.data.repo.FragmentRepo
 
@@ -29,6 +30,10 @@ class FragmentViewModel:ViewModel() {
         //call repo here
         repo.saveDocument(documentData)
         inputVal.value = "success"
+    }
+
+    fun documentCameraPressed(view:View) {
+        Jump.JUMP_TRIGGER.value = false
     }
 
 

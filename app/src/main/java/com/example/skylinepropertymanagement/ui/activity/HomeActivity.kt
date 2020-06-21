@@ -1,16 +1,24 @@
 package com.example.skylinepropertymanagement.ui.activity
 
+import android.content.Intent
+import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import com.example.skylinepropertymanagement.R
+import com.example.skylinepropertymanagement.app.Jump
+import com.example.skylinepropertymanagement.app.onlyNew
 import com.example.skylinepropertymanagement.app.setupToolbar
 import com.example.skylinepropertymanagement.data.SessionManager
 import com.google.android.material.navigation.NavigationView
@@ -19,8 +27,10 @@ import kotlinx.android.synthetic.main.app_bar.*
 import kotlinx.android.synthetic.main.app_bar.view.*
 import kotlinx.android.synthetic.main.content_main.*
 import kotlinx.android.synthetic.main.nav_header.view.*
+import java.util.jar.Manifest
 
 class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+    private val CAMERA_REQUEST_CODE = 100
     private lateinit var drawer:DrawerLayout
     private lateinit var navView:NavigationView
     private lateinit var headerView:View
@@ -56,6 +66,11 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         toggle.syncState()
         navView.setNavigationItemSelectedListener(this)
 
+        Jump.JUMP_TRIGGER.onlyNew(this).observe(this, Observer{
+            checkCameraPermission()
+
+        })
+
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
@@ -75,5 +90,19 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             navController.navigate(R.id.action_global_homeFragment)
             super.onBackPressed()
         }
+    }
+
+    fun openCamera() {
+        var intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        startActivityForResult(intent,CAMERA_REQUEST_CODE )
+    }
+
+    fun checkCameraPermission() {
+        var permission = ContextCompat.checkSelfPermission(this,android.Manifest.permission.CAMERA)
+
+        if(permission != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.CAMERA), CAMERA_REQUEST_CODE)
+        } else {openCamera()}
+
     }
 }
