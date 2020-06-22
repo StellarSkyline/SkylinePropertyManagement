@@ -34,8 +34,9 @@ class AddProperty: Fragment() {
 
         viewModel.checkJump.observe(viewLifecycleOwner, Observer {
             if(it ==false) {
-                navController.navigate(R.id.action_addProperty_to_propertiesFragment)
                 viewModel.repo.propertyData.value = viewModel.repo.propertyData.value
+                navController.navigate(R.id.action_addProperty_to_propertiesFragment)
+
             }
         })
 

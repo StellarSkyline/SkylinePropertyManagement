@@ -66,9 +66,7 @@ class FragmentRepo {
                 App.instance.toast(it.msg.toString())
 
             },{
-
                 App.instance.log(it.toString())
-
             })
     }
 
@@ -77,13 +75,26 @@ class FragmentRepo {
         request.subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
-
                 propertyData.value = it.Property
                 App.instance.log(it.toString())
 
             },{
                 App.instance.log(it.toString())
             })
+    }
+
+    fun deleteProperty(propertyid:String) {
+        var request = ApiClient.invoke().removeProperty(propertyid = propertyid)
+
+        request.subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                App.instance.toast(it.toString())
+
+            },{
+                App.instance.log(it.toString())
+            })
+
     }
 
 

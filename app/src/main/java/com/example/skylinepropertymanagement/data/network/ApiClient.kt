@@ -4,6 +4,7 @@ import com.example.skylinepropertymanagement.app.Config
 import com.example.skylinepropertymanagement.data.model.LoginResponse
 import com.example.skylinepropertymanagement.data.model.PropertyAddResponse
 import com.example.skylinepropertymanagement.data.model.PropertyResponse
+import com.example.skylinepropertymanagement.data.model.RemoveResponse
 import com.google.gson.GsonBuilder
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import io.reactivex.Observable
@@ -17,19 +18,25 @@ import retrofit2.http.Query
 interface ApiClient {
 
     @GET("pro_mgt_reg.php")
-    fun register(@Query("email")email:String, @Query("landlord_email")landEmail:String, @Query("password")password:String, @Query("account_for")account:String): Observable<Any>
+    fun register(@Query("email")email:String,
+                 @Query("landlord_email")landEmail:String,
+                 @Query("password")password:String,
+                 @Query("account_for")account:String): Observable<Any>
 
     @GET("pro_mgt_login.php")
-    fun login(@Query("email")email:String, @Query("password")password:String):Observable<LoginResponse>
+    fun login(@Query("email")email:String,
+              @Query("password")password:String):Observable<LoginResponse>
 
     @GET("property.php")
-    fun properties(@Query("userid")userId:String, @Query("usertype")userType:String):Observable<PropertyResponse>
+    fun properties(@Query("userid")userId:String,
+                   @Query("usertype")userType:String):Observable<PropertyResponse>
 
     @GET("pro_mgt_property_all.php ")
     fun getAllProperties():Observable<PropertyResponse>
 
     @GET("pro_mgt_add_pro.php")
-    fun addProperty(@Query("address")address:String, @Query("city")city:String,
+    fun addProperty(@Query("address")address:String,
+                    @Query("city")city:String,
                     @Query("state")state:String,
                     @Query("country")country:String,
                     @Query("pro_status")pro_status:String,
@@ -40,6 +47,11 @@ interface ApiClient {
                     @Query("latitude")latitude:String,
                     @Query("longitude")longitude:String
     ):Observable<PropertyAddResponse>
+
+
+    @GET("remove-property.php")
+    fun removeProperty(
+        @Query("propertyid")propertyid:String):Observable<RemoveResponse>
 
 
 

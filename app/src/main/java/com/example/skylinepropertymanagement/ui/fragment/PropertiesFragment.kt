@@ -8,8 +8,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.Navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.skylinepropertymanagement.R
@@ -20,7 +18,6 @@ import com.example.skylinepropertymanagement.app.onlyNew
 import com.example.skylinepropertymanagement.data.adapter.AdapterProperties
 import com.example.skylinepropertymanagement.data.model.Property
 import com.example.skylinepropertymanagement.databinding.FragmentPropertiesBinding
-import com.example.skylinepropertymanagement.databinding.FragmentVendorBinding
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class PropertiesFragment: Fragment() {
@@ -35,7 +32,6 @@ class PropertiesFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        //viewModel = ViewModelProviders.of(requireActivity()).get(FragmentViewModel::class.java)
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_properties, container, false)
         mBinding.fragmentViewModel = viewModel
         mBinding.lifecycleOwner = this
@@ -65,6 +61,15 @@ class PropertiesFragment: Fragment() {
             }
         })
 
+        Jump.DELETE_PROP_TRIGGER.onlyNew(this).observe(viewLifecycleOwner, Observer {
+            viewModel.repo.deleteProperty(it)
+            viewModel.repo.getPropertyList()
+        })
 
     }
+
+//    override fun removeProperty(propertyid: String) {
+//        viewModel.repo.deleteProperty(propertyid)
+//    }
+
 }

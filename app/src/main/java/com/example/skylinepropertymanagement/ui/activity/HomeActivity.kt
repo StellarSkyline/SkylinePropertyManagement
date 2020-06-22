@@ -73,7 +73,6 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         Jump.JUMP_TRIGGER.onlyNew(this).observe(this, Observer{
             checkCameraPermission()
-
         })
 
     }
