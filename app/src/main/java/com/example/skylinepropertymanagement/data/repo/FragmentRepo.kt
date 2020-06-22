@@ -22,6 +22,7 @@ class FragmentRepo {
     val db = DB.createDatabase(App.instance)
 
     val propertyData by lazy{ MutableLiveData<List<Property>>()}
+    val meetingData by lazy{MutableLiveData<List<Meeting>>()}
 
 
 
@@ -99,9 +100,16 @@ class FragmentRepo {
 
     }
 
+    fun getMeeting():List<Meeting>{
+        return db.Dao().getMeeting()
+
+    }
+
     fun addMeeting(meeting:MutableLiveData<Meeting>) {
         db.Dao().addMeeting(MeetingTable(name = meeting.value?.name!!, location = meeting.value?.location!!,time = meeting.value?.time!!,description = meeting.value?.description!!))
-        App.instance.log("Saved to Meeting DB")
+        meetingData.value = db.Dao().getMeeting()
+        App.instance.toast("Meeting Saved")
+
 
     }
 

@@ -68,8 +68,5 @@ class PropertiesFragment: Fragment() {
 
     }
 
-//    override fun removeProperty(propertyid: String) {
-//        viewModel.repo.deleteProperty(propertyid)
-//    }
 
 }

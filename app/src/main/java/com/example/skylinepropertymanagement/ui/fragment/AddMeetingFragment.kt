@@ -42,6 +42,7 @@ class AddMeetingFragment:Fragment() {
                     text_layout_name.isErrorEnabled = false
                     text_input_location.isErrorEnabled = false
                     text_input_time.isErrorEnabled = false
+                    navController.navigate(R.id.action_addMeetingFragment_to_meetingFragment)
                 }
             }
         })
