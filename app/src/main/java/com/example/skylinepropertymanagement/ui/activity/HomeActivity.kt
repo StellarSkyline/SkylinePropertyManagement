@@ -10,14 +10,11 @@ import android.view.MenuItem
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.appcompat.widget.Toolbar
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import com.example.skylinepropertymanagement.R
 import com.example.skylinepropertymanagement.app.Jump
@@ -28,10 +25,7 @@ import com.example.skylinepropertymanagement.ui.fragment.FragmentViewModel
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar.*
-import kotlinx.android.synthetic.main.app_bar.view.*
-import kotlinx.android.synthetic.main.content_main.*
 import kotlinx.android.synthetic.main.nav_header.view.*
-import java.util.jar.Manifest
 
 class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     val viewModel: FragmentViewModel by viewModels()
@@ -82,6 +76,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.nav_alert -> { navController.navigate(R.id.action_global_alertFragment)}
             R.id.nav_document -> {navController.navigate(R.id.action_global_documentsFragment)}
             R.id.nav_properties ->{navController.navigate(R.id.action_global_propertiesFragment)}
+            R.id.nav_meetings -> {navController.navigate(R.id.action_global_meetingFragment)}
         }
         return true
     }
@@ -89,10 +84,8 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onBackPressed() {
         navController.navigate(R.id.action_global_homeFragment)
         if(drawer.isDrawerOpen(GravityCompat.START)) {
-
             drawer.closeDrawer(GravityCompat.START)
         } else {
-            navController.navigate(R.id.action_global_homeFragment)
             super.onBackPressed()
         }
     }
