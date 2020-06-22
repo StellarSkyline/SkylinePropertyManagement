@@ -7,8 +7,10 @@ import com.example.skylinepropertymanagement.app.log
 import com.example.skylinepropertymanagement.app.toast
 import com.example.skylinepropertymanagement.data.SessionManager
 import com.example.skylinepropertymanagement.data.database.DB
+import com.example.skylinepropertymanagement.data.database.entity.MeetingTable
 import com.example.skylinepropertymanagement.data.database.entity.SavedDocuments
 import com.example.skylinepropertymanagement.data.model.Document
+import com.example.skylinepropertymanagement.data.model.Meeting
 import com.example.skylinepropertymanagement.data.model.Property
 import com.example.skylinepropertymanagement.data.model.PropertyAdd
 import com.example.skylinepropertymanagement.data.network.ApiClient
@@ -94,6 +96,12 @@ class FragmentRepo {
             },{
                 App.instance.log(it.toString())
             })
+
+    }
+
+    fun addMeeting(meeting:MutableLiveData<Meeting>) {
+        db.Dao().addMeeting(MeetingTable(name = meeting.value?.name!!, location = meeting.value?.location!!,time = meeting.value?.time!!,description = meeting.value?.description!!))
+        App.instance.log("Saved to Meeting DB")
 
     }
 

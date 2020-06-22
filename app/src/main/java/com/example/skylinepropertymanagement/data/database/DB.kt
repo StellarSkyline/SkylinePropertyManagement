@@ -4,10 +4,10 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.skylinepropertymanagement.data.database.entity.Homes
+import com.example.skylinepropertymanagement.data.database.entity.MeetingTable
 import com.example.skylinepropertymanagement.data.database.entity.SavedDocuments
 
-@Database(entities = [SavedDocuments::class], version = 1)
+@Database(entities = [SavedDocuments::class, MeetingTable::class], version = 1)
 abstract class DB:RoomDatabase() {
 
     abstract fun Dao():DataAccessObject

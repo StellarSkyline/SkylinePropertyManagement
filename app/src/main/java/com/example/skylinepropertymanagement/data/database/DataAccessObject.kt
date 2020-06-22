@@ -2,6 +2,7 @@ package com.example.skylinepropertymanagement.data.database
 
 import androidx.room.Dao
 import androidx.room.Insert
+import com.example.skylinepropertymanagement.data.database.entity.MeetingTable
 import com.example.skylinepropertymanagement.data.database.entity.SavedDocuments
 import com.example.skylinepropertymanagement.data.model.Document
 
@@ -9,6 +10,9 @@ import com.example.skylinepropertymanagement.data.model.Document
 @Dao
 interface DataAccessObject {
 
-    @Insert
+    @Insert()
     fun addDocument(d:SavedDocuments)
+
+    @Insert
+    fun addMeeting(m:MeetingTable)
 }

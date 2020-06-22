@@ -49,9 +49,21 @@
     <fragment
         android:id="@+id/meetingFragment"
         android:name="com.example.skylinepropertymanagement.ui.fragment.MeetingFragment"
-        android:label="MeetingFragment" />
+        android:label="MeetingFragment" >
+        <action
+            android:id="@+id/action_meetingFragment_to_addMeetingFragment"
+            app:destination="@id/addMeetingFragment" />
+    </fragment>
     <action
         android:id="@+id/action_global_meetingFragment"
         app:destination="@id/meetingFragment"
         app:popUpTo="@id/homeFragment" />
+    <fragment
+        android:id="@+id/addMeetingFragment"
+        android:name="com.example.skylinepropertymanagement.ui.fragment.AddMeetingFragment"
+        android:label="AddMeetingFragment" >
+        <action
+            android:id="@+id/action_addMeetingFragment_to_meetingFragment"
+            app:destination="@id/meetingFragment" />
+    </fragment>
 </navigation>

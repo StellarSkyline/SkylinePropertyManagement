@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.skylinepropertymanagement.app.Jump
 import com.example.skylinepropertymanagement.data.model.Document
+import com.example.skylinepropertymanagement.data.model.Meeting
 import com.example.skylinepropertymanagement.data.model.PropertyAdd
 import com.example.skylinepropertymanagement.data.repo.FragmentRepo
 
@@ -34,7 +35,13 @@ class FragmentViewModel:ViewModel() {
 
     val checkJump by lazy { MutableLiveData<Boolean>() }
 
+    val meetingList by lazy {
+        val x = MutableLiveData<Meeting>()
+        x.value = Meeting()
+        x
+    }
 
+//================================Button Functions=========================================
     fun onButtonDocument(view:View) {
 
         if(documentData.value?.name.isNullOrEmpty()){
@@ -62,6 +69,27 @@ class FragmentViewModel:ViewModel() {
     fun saveProperty(view:View) {
         repo.addProperty(propertyAdd)
         checkJump.value = false
+    }
+
+    fun AddMeeting(view:View) {
+        if(meetingList.value?.name.isNullOrEmpty()) {
+            inputVal.value = "name"
+            return
+        } else if(meetingList.value?.location.isNullOrEmpty()) {
+            inputVal.value = "location"
+            return
+        } else if(meetingList.value?.time.isNullOrEmpty()) {
+            inputVal.value = "time"
+            return
+        } else if(meetingList.value?.description.isNullOrEmpty()) {
+            inputVal.value = "description"
+            return
+        } else {
+            inputVal.value = "success"
+            repo.addMeeting(meetingList)
+            return
+        }
+
     }
 
 
