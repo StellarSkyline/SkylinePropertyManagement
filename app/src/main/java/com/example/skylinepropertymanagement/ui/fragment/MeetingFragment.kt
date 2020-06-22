@@ -11,7 +11,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.skylinepropertymanagement.R
 import com.example.skylinepropertymanagement.app.App
+import com.example.skylinepropertymanagement.app.Jump
 import com.example.skylinepropertymanagement.app.log
+import com.example.skylinepropertymanagement.app.onlyNew
 import com.example.skylinepropertymanagement.data.adapter.AdapterMeeting
 import com.example.skylinepropertymanagement.data.model.Meeting
 import kotlinx.android.synthetic.main.fragment_meeting.*
@@ -51,6 +53,13 @@ class MeetingFragment: Fragment() {
             mList = it!!
             App.instance.log(mList.toString())
             adapter.setData(mList!!)
+
+        })
+
+        Jump.DELETE_PROP_TRIGGER.onlyNew(this).observe(viewLifecycleOwner, Observer {
+            viewModel.repo.deleteMeeting(it)
+            mList = viewModel.repo.getMeeting()
+            adapter.setData(mList)
 
         })
 

@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.skylinepropertymanagement.R
+import com.example.skylinepropertymanagement.app.Jump
 import com.example.skylinepropertymanagement.data.model.Meeting
-import com.example.skylinepropertymanagement.ui.fragment.MeetingFragment
 import kotlinx.android.synthetic.main.adapter_row_meeting.view.*
 
 class AdapterMeeting(var mContext: Context):RecyclerView.Adapter<AdapterMeeting.ViewHolder>() {
@@ -33,6 +33,11 @@ class AdapterMeeting(var mContext: Context):RecyclerView.Adapter<AdapterMeeting.
         fun bindView(item:Meeting) {
             itemView.image_view.setImageResource(R.drawable.ic_tick)
             itemView.text_view_name.text = item.name
+
+
+            itemView.button_delete.setOnClickListener {
+                Jump.DELETE_PROP_TRIGGER.value = item.id
+            }
 
         }
     }

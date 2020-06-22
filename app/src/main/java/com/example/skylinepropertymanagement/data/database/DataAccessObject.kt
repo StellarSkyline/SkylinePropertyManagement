@@ -1,6 +1,7 @@
 package com.example.skylinepropertymanagement.data.database
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import com.example.skylinepropertymanagement.data.database.entity.MeetingTable
@@ -20,4 +21,9 @@ interface DataAccessObject {
 
     @Query("select * from meetingTable")
     fun getMeeting():List<Meeting>
+
+    @Query("delete from meetingTable where id = :id ")
+    fun deleteMeeting(id:String)
+
+
 }

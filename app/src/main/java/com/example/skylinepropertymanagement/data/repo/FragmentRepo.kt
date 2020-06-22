@@ -109,8 +109,10 @@ class FragmentRepo {
         db.Dao().addMeeting(MeetingTable(name = meeting.value?.name!!, location = meeting.value?.location!!,time = meeting.value?.time!!,description = meeting.value?.description!!))
         meetingData.value = db.Dao().getMeeting()
         App.instance.toast("Meeting Saved")
+    }
 
-
+    fun deleteMeeting(id:String) {
+        db.Dao().deleteMeeting(id)
     }
 
 
