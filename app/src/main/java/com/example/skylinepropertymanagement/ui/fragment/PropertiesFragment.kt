@@ -11,17 +11,24 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.skylinepropertymanagement.R
+import com.example.skylinepropertymanagement.app.App
 import com.example.skylinepropertymanagement.app.Jump
+import com.example.skylinepropertymanagement.app.log
 import com.example.skylinepropertymanagement.app.onlyNew
+import com.example.skylinepropertymanagement.data.adapter.AdapterProperties
+import com.example.skylinepropertymanagement.data.model.Property
 import com.example.skylinepropertymanagement.databinding.FragmentPropertiesBinding
 import com.example.skylinepropertymanagement.databinding.FragmentVendorBinding
+import kotlinx.android.synthetic.main.fragment_home.*
 
 class PropertiesFragment: Fragment() {
     lateinit var mBinding: FragmentPropertiesBinding
     val viewModel: FragmentViewModel by activityViewModels()
-
+    lateinit var adapter: AdapterProperties
     val navController by lazy {findNavController()}
+    var mList:List<Property>? = emptyList()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,14 +40,29 @@ class PropertiesFragment: Fragment() {
         mBinding.fragmentViewModel = viewModel
         mBinding.lifecycleOwner = this
 
+        adapter = AdapterProperties(activity?.applicationContext!!)
+
         return mBinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        recycler_view.layoutManager = LinearLayoutManager(activity?.applicationContext)
+        recycler_view.adapter = adapter
+        viewModel.repo.getPropertyList()
+
+        viewModel.repo.propertyData.observe(viewLifecycleOwner, Observer{
+            mList = it!!
+            App.instance.log(mList.toString())
+            adapter.setData(mList!!)
+        })
+
+
         viewModel.checkJump.observe(viewLifecycleOwner, Observer {
-            navController.navigate(R.id.action_propertiesFragment_to_addProperty)
+            if(it == true) {
+                navController.navigate(R.id.action_propertiesFragment_to_addProperty)
+            }
         })
 
 

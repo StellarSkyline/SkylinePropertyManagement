@@ -61,6 +61,7 @@ class FragmentViewModel:ViewModel() {
 
     fun saveProperty(view:View) {
         repo.addProperty(propertyAdd)
+        checkJump.value = false
     }
 
 
