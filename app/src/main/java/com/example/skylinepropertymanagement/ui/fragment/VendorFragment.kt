@@ -7,29 +7,21 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.Navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import com.example.skylinepropertymanagement.R
-import com.example.skylinepropertymanagement.app.Jump
-import com.example.skylinepropertymanagement.app.onlyNew
-import com.example.skylinepropertymanagement.databinding.FragmentPropertiesBinding
 import com.example.skylinepropertymanagement.databinding.FragmentVendorBinding
 
-class PropertiesFragment: Fragment() {
-    lateinit var mBinding: FragmentPropertiesBinding
+class VendorFragment: Fragment() {
+    lateinit var mBinding: FragmentVendorBinding
     val viewModel: FragmentViewModel by activityViewModels()
 
-    val navController by lazy {findNavController()}
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        //viewModel = ViewModelProviders.of(requireActivity()).get(FragmentViewModel::class.java)
-        mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_properties, container, false)
+        //intilze data binding - this is replaced with requireActivity() if in a fragment
+        mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_vendor, container, false)
         mBinding.fragmentViewModel = viewModel
         mBinding.lifecycleOwner = this
 
@@ -38,11 +30,5 @@ class PropertiesFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        viewModel.checkJump.observe(viewLifecycleOwner, Observer {
-            navController.navigate(R.id.action_propertiesFragment_to_addProperty)
-        })
-
-
     }
 }

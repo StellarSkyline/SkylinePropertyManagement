@@ -2,6 +2,7 @@ package com.example.skylinepropertymanagement.data.network
 
 import com.example.skylinepropertymanagement.app.Config
 import com.example.skylinepropertymanagement.data.model.LoginResponse
+import com.example.skylinepropertymanagement.data.model.PropertyAddResponse
 import com.example.skylinepropertymanagement.data.model.PropertyResponse
 import com.google.gson.GsonBuilder
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
@@ -26,6 +27,21 @@ interface ApiClient {
 
     @GET("pro_mgt_property_all.php ")
     fun getAllProperties():Observable<PropertyResponse>
+
+    @GET("pro_mgt_add_pro.php")
+    fun addProperty(@Query("address")address:String, @Query("city")city:String,
+                    @Query("state")state:String,
+                    @Query("country")country:String,
+                    @Query("pro_status")pro_status:String,
+                    @Query("purchase_price")purchase_price:String,
+                    @Query("mortage_info")mortage_info:String,
+                    @Query("userid")userid:String,
+                    @Query("usertype")usertype:String,
+                    @Query("latitude")latitude:String,
+                    @Query("longitude")longitude:String
+    ):Observable<PropertyAddResponse>
+
+
 
     companion object {
         operator fun invoke():ApiClient {

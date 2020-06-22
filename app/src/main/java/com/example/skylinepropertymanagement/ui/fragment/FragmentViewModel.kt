@@ -6,12 +6,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.skylinepropertymanagement.app.Jump
 import com.example.skylinepropertymanagement.data.model.Document
+import com.example.skylinepropertymanagement.data.model.PropertyAdd
 import com.example.skylinepropertymanagement.data.repo.FragmentRepo
 
 class FragmentViewModel:ViewModel() {
     val repo = FragmentRepo()
-//    var photoList:ArrayList<Bitmap> = ArrayList()
-//    val photoList by lazy {MutableLiveData<ArrayList<Bitmap>>()}
 
     val photoList by lazy {
         val x = MutableLiveData<ArrayList<Bitmap>>()
@@ -26,6 +25,15 @@ class FragmentViewModel:ViewModel() {
         x.value = Document()
         x
     }
+
+    val propertyAdd by lazy {
+        val x = MutableLiveData<PropertyAdd>()
+        x.value = PropertyAdd()
+        x
+    }
+
+    val checkJump by lazy { MutableLiveData<Boolean>() }
+
 
     fun onButtonDocument(view:View) {
 
@@ -47,6 +55,13 @@ class FragmentViewModel:ViewModel() {
         Jump.JUMP_TRIGGER.value = false
     }
 
+    fun onAddProperties(view:View) {
+        checkJump.value = true
+    }
+
+    fun saveProperty(view:View) {
+        repo.addProperty(propertyAdd)
+    }
 
 
 }
