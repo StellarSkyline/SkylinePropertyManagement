@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.skylinepropertymanagement.R
 import com.example.skylinepropertymanagement.app.App
 import com.example.skylinepropertymanagement.app.log
+import com.example.skylinepropertymanagement.app.onlyNew
 import com.example.skylinepropertymanagement.app.toast
 import com.example.skylinepropertymanagement.data.adapter.AdapterImage
 import com.example.skylinepropertymanagement.data.adapter.AdapterProperties
@@ -51,7 +52,7 @@ class DocumentsFragment: Fragment() {
         recycler_view.layoutManager = LinearLayoutManager(activity?.applicationContext!!, LinearLayoutManager.HORIZONTAL, false)
         recycler_view.adapter = adapter
 
-        viewModel.photoList.observe(viewLifecycleOwner, Observer {
+        viewModel.photoList.onlyNew(this).observe(viewLifecycleOwner, Observer {
             adapter.setData(it)
         })
 

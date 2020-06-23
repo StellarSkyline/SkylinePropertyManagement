@@ -39,11 +39,12 @@
             app:layout_constraintTop_toTopOf="@+id/imageView4" />
 
         <Button
-            android:onClick="@{FragmentViewModel::onAddProperties}"
             android:id="@+id/button_add_properties"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:background="@color/classicBlue"
             android:text="Add Properties"
+            android:textColor="#FFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

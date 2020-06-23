@@ -36,7 +36,7 @@ class AdapterMeeting(var mContext: Context):RecyclerView.Adapter<AdapterMeeting.
 
 
             itemView.button_delete.setOnClickListener {
-                Jump.DELETE_PROP_TRIGGER.value = item.id
+                Jump.DELETE_MEETING_TRIGGER.value = item.id
             }
 
         }

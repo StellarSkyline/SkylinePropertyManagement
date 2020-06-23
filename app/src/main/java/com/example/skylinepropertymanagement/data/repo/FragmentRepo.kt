@@ -68,6 +68,7 @@ class FragmentRepo {
             .subscribe({
                 App.instance.toast(it.msg.toString())
 
+
             },{
                 App.instance.log(it.toString())
             })
@@ -113,6 +114,7 @@ class FragmentRepo {
 
     fun deleteMeeting(id:String) {
         db.Dao().deleteMeeting(id)
+
     }
 
 

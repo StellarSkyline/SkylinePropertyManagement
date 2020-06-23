@@ -10,6 +10,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.skylinepropertymanagement.R
+import com.example.skylinepropertymanagement.app.onlyNew
 import com.example.skylinepropertymanagement.databinding.FragmentAddMeetingBinding
 import kotlinx.android.synthetic.main.fragment_add_meeting.*
 
@@ -33,7 +34,7 @@ class AddMeetingFragment:Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.inputVal.observe(viewLifecycleOwner, Observer {
+        viewModel.inputVal.onlyNew(this).observe(viewLifecycleOwner, Observer {
             when(it) {
                 "name" -> {text_layout_name.error = "Meeting name is required"}
                 "location"->{text_input_location.error = "Location is required"}
@@ -42,8 +43,14 @@ class AddMeetingFragment:Fragment() {
                     text_layout_name.isErrorEnabled = false
                     text_input_location.isErrorEnabled = false
                     text_input_time.isErrorEnabled = false
-                    navController.navigate(R.id.action_addMeetingFragment_to_meetingFragment)
+
                 }
+            }
+        })
+
+        viewModel.checkJump.onlyNew(this).observe(viewLifecycleOwner, Observer{
+            if (viewModel.checkJump.value == true) {
+                navController.navigate(R.id.action_addMeetingFragment_to_meetingFragment)
             }
         })
     }

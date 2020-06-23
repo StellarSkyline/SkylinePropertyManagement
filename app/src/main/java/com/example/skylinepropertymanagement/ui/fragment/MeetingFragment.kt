@@ -56,7 +56,7 @@ class MeetingFragment: Fragment() {
 
         })
 
-        Jump.DELETE_PROP_TRIGGER.onlyNew(this).observe(viewLifecycleOwner, Observer {
+        Jump.DELETE_MEETING_TRIGGER.onlyNew(this).observe(viewLifecycleOwner, Observer {
             viewModel.repo.deleteMeeting(it)
             mList = viewModel.repo.getMeeting()
             adapter.setData(mList)

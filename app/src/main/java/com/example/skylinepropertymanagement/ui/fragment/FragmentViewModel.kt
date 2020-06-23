@@ -40,6 +40,7 @@ class FragmentViewModel:ViewModel() {
         x.value = Meeting()
         x
     }
+    val j by lazy{MutableLiveData<Boolean>()}
 
 //================================Button Functions=========================================
     fun onButtonDocument(view:View) {
@@ -68,7 +69,8 @@ class FragmentViewModel:ViewModel() {
 
     fun saveProperty(view:View) {
         repo.addProperty(propertyAdd)
-        checkJump.value = false
+        repo.getPropertyList()
+        j.value = true
     }
 
     fun AddMeeting(view:View) {
@@ -87,6 +89,7 @@ class FragmentViewModel:ViewModel() {
         } else {
             inputVal.value = "success"
             repo.addMeeting(meetingList)
+            checkJump.value = true
             return
         }
 

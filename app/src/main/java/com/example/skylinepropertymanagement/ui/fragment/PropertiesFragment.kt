@@ -19,6 +19,8 @@ import com.example.skylinepropertymanagement.data.adapter.AdapterProperties
 import com.example.skylinepropertymanagement.data.model.Property
 import com.example.skylinepropertymanagement.databinding.FragmentPropertiesBinding
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.fragment_home.recycler_view
+import kotlinx.android.synthetic.main.fragment_properties.*
 
 class PropertiesFragment: Fragment() {
     lateinit var mBinding: FragmentPropertiesBinding
@@ -44,21 +46,22 @@ class PropertiesFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        button_add_properties.setOnClickListener {
+            navController.navigate(R.id.action_propertiesFragment_to_addProperty)
+        }
+
         recycler_view.layoutManager = LinearLayoutManager(activity?.applicationContext)
         recycler_view.adapter = adapter
         viewModel.repo.getPropertyList()
 
         viewModel.repo.propertyData.observe(viewLifecycleOwner, Observer{
             mList = it!!
-            App.instance.log(mList.toString())
             adapter.setData(mList!!)
         })
 
-
-        viewModel.checkJump.observe(viewLifecycleOwner, Observer {
-            if(it == true) {
-                navController.navigate(R.id.action_propertiesFragment_to_addProperty)
-            }
+        viewModel.checkJump.onlyNew(this).observe(viewLifecycleOwner, Observer {
+            mList = viewModel.repo.propertyData.value
+            adapter.setData(mList!!)
         })
 
         Jump.DELETE_PROP_TRIGGER.onlyNew(this).observe(viewLifecycleOwner, Observer {
