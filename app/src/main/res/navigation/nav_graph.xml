@@ -90,4 +90,12 @@
             app:destination="@id/fragmentPropertyDetail"
             app:popUpTo="@id/fragmentAddTenant" />
     </fragment>
+    <fragment
+        android:id="@+id/fragmentTennant"
+        android:name="com.example.skylinepropertymanagement.ui.fragment.FragmentTennant"
+        android:label="FragmentTennant" />
+    <action
+        android:id="@+id/action_global_fragmentTennant"
+        app:destination="@id/fragmentTennant"
+        app:popUpTo="@id/nav_graph" />
 </navigation>

@@ -122,9 +122,12 @@ class FragmentRepo {
         request.subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
-
-                //Handle Response
                 App.instance.log(it.toString())
+
+                when(it.toString()) {
+                    "successfully" -> {App.instance.toast("Successfully Added Tennant")}
+                    "Email" -> {App.instance.toast("Property already rented out")}
+                }
             },{
                 App.instance.log(it.toString())
             })

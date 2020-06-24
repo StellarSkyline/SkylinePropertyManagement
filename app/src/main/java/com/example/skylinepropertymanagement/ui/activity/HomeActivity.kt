@@ -77,6 +77,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.nav_document -> {navController.navigate(R.id.action_global_documentsFragment)}
             R.id.nav_properties ->{navController.navigate(R.id.action_global_propertiesFragment)}
             R.id.nav_meetings -> {navController.navigate(R.id.action_global_meetingFragment)}
+            R.id.nav_tennant -> {navController.navigate(R.id.action_global_fragmentTennant)}
         }
         return true
     }
