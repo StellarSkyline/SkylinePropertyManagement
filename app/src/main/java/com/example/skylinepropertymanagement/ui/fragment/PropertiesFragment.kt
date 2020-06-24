@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -67,6 +68,11 @@ class PropertiesFragment: Fragment() {
         Jump.DELETE_PROP_TRIGGER.onlyNew(this).observe(viewLifecycleOwner, Observer {
             viewModel.repo.deleteProperty(it)
             viewModel.repo.getPropertyList()
+        })
+
+        Jump.PROPERTIES_DETAIL_TRIGGER.onlyNew(this).observe(viewLifecycleOwner, Observer{
+            val bundle = bundleOf("data" to it)
+            navController.navigate(R.id.action_propertiesFragment_to_fragmentPropertyDetail, bundle)
         })
 
     }

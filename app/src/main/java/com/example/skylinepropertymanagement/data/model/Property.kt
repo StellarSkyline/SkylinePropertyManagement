@@ -1,5 +1,7 @@
 package com.example.skylinepropertymanagement.data.model
 
+import java.io.Serializable
+
 data class Property(
     val id: String,
     val propertyaddress: String,
@@ -9,4 +11,4 @@ data class Property(
     val propertypurchaseprice: String,
     val propertystate: String,
     val propertystatus: String
-)
+):Serializable

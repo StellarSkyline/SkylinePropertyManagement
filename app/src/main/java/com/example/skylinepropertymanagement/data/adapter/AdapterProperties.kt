@@ -44,6 +44,10 @@ class AdapterProperties(var mContext:Context):RecyclerView.Adapter<AdapterProper
                 Jump.DELETE_PROP_TRIGGER.value = item.id
             }
 
+            itemView.setOnClickListener{
+                Jump.PROPERTIES_DETAIL_TRIGGER.value = item
+            }
+
         }
 
     }

@@ -46,6 +46,7 @@ class MeetingFragment: Fragment() {
 
         button_add_meeting.setOnClickListener {
             navController.navigate(R.id.action_meetingFragment_to_addMeetingFragment)
+
         }
 
         viewModel.repo.meetingData.observe(viewLifecycleOwner, Observer {
