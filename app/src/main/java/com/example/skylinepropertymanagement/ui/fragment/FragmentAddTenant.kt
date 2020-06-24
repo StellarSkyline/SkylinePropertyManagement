@@ -49,7 +49,6 @@ class FragmentAddTenant: Fragment() {
                     text_input_mobile_tennant.isErrorEnabled = false
                     viewModel.propertyid.value = property.id
                     viewModel.address.value = property.propertyaddress
-                    navController.navigate(R.id.action_fragmentAddTenant_to_fragmentPropertyDetail)
                 }
             }
 

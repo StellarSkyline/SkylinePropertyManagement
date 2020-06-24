@@ -53,7 +53,7 @@ class DocumentsFragment: Fragment() {
             adapter.setData(it)
         })
 
-        viewModel.inputVal.observe(viewLifecycleOwner, Observer {
+        viewModel.inputVal.onlyNew(this).observe(viewLifecycleOwner, Observer {
             when(it) {
                 "name" -> {text_layout_email.error = "Document name required"}
                 "type" -> {text_layout_type.error = "Document type is required"}

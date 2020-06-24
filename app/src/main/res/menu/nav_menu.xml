@@ -26,29 +26,29 @@
             android:title="Tennants"
             android:id="@+id/nav_tennant"
             android:icon="@drawable/ic_tenants"/>
-        <item
-            android:title="Collect Rent"
-            android:id="@+id/nav_collect"
-            android:icon="@drawable/ic_collect"/>
+<!--        <item-->
+<!--            android:title="Collect Rent"-->
+<!--            android:id="@+id/nav_collect"-->
+<!--            android:icon="@drawable/ic_collect"/>-->
 
     </group>
 
-    <group
-        android:id="@+id/group_tennant">
-        <item
-            android:title="Payment"
-            android:id="@+id/nav_payment"
-            android:icon="@drawable/ic_payment"/>
+<!--    <group-->
+<!--        android:id="@+id/group_tennant">-->
+<!--        <item-->
+<!--            android:title="Payment"-->
+<!--            android:id="@+id/nav_payment"-->
+<!--            android:icon="@drawable/ic_payment"/>-->
 
-        <item
-            android:title="Trip"
-            android:id="@+id/nav_trip"
-            android:icon="@drawable/ic_trip"/>
+<!--        <item-->
+<!--            android:title="Trip"-->
+<!--            android:id="@+id/nav_trip"-->
+<!--            android:icon="@drawable/ic_trip"/>-->
 
-        <item
-            android:title="Vendor"
-            android:id="@+id/nav_vendor"
-            android:icon="@drawable/ic_vendor"/>
-    </group>
+<!--        <item-->
+<!--            android:title="Vendor"-->
+<!--            android:id="@+id/nav_vendor"-->
+<!--            android:icon="@drawable/ic_vendor"/>-->
+<!--    </group>-->
 
 </menu>
