@@ -1,10 +1,7 @@
 package com.example.skylinepropertymanagement.data.network
 
 import com.example.skylinepropertymanagement.app.Config
-import com.example.skylinepropertymanagement.data.model.LoginResponse
-import com.example.skylinepropertymanagement.data.model.PropertyAddResponse
-import com.example.skylinepropertymanagement.data.model.PropertyResponse
-import com.example.skylinepropertymanagement.data.model.RemoveResponse
+import com.example.skylinepropertymanagement.data.model.*
 import com.google.gson.GsonBuilder
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import io.reactivex.Observable
@@ -61,6 +58,9 @@ interface ApiClient {
     @GET("remove-property.php")
     fun removeProperty(
         @Query("propertyid")propertyid:String):Observable<RemoveResponse>
+
+    @GET("pro_mgt_tenent_details.php")
+    fun getTennant(@Query("landlordid")landlordid:String):Observable<TennantResponse>
 
 
 

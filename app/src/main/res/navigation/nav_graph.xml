@@ -97,5 +97,5 @@
     <action
         android:id="@+id/action_global_fragmentTennant"
         app:destination="@id/fragmentTennant"
-        app:popUpTo="@id/nav_graph" />
+        app:popUpTo="@id/homeFragment" />
 </navigation>

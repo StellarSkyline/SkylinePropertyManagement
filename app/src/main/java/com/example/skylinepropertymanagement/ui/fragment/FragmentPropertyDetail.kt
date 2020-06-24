@@ -25,7 +25,7 @@ class FragmentPropertyDetail: Fragment() {
         super.onViewCreated(view, savedInstanceState)
         var property = arguments?.getSerializable("data") as Property
 
-        text_view_address_pDetail.text = "${property.propertyaddress}, ${property.propertycity}"
+        text_view_address.text = "${property.propertyaddress}, ${property.propertycity}"
         text_view_address2_pDetail.text = "${property.propertystate} | ${property.propertycountry}"
         text_view_description_pDetail.text = property.propertymortageinfo
 

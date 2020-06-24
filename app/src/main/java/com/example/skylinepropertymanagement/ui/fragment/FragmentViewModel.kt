@@ -124,5 +124,9 @@ class FragmentViewModel:ViewModel() {
         }
     }
 
+    fun getTennant() {
+        repo.getTennant()
+    }
+
 
 }

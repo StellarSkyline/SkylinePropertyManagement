@@ -61,19 +61,20 @@
             android:id="@+id/text_layout_type"
             android:layout_width="409dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:padding="10dp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_layout_name">
+            app:layout_constraintTop_toBottomOf="@+id/text_layout_email">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edit_text_type"
-                android:text="@={FragmentViewModel.documentData.type}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Enter Document Type"
-                android:padding="10dp" />
+                android:padding="10dp"
+                android:text="@={FragmentViewModel.documentData.type}" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView

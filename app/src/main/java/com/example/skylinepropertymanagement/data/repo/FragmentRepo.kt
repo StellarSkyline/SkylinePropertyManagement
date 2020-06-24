@@ -20,6 +20,7 @@ class FragmentRepo {
 
     val propertyData by lazy{ MutableLiveData<List<Property>>()}
     val meetingData by lazy{MutableLiveData<List<Meeting>>()}
+    val tennant by lazy{MutableLiveData<List<Tennant>>()}
 
 
 
@@ -134,6 +135,21 @@ class FragmentRepo {
 
     }
 
+    fun getTennant(){
+        val request = ApiClient.invoke().getTennant(sm.getUserId())
+
+        request.subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+
+                App.instance.log(it.toString())
+
+                tennant.value = it.Tenants
+
+            },{
+                App.instance.log(it.toString())
+            })
+    }
 
 
 
