@@ -48,6 +48,15 @@ interface ApiClient {
                     @Query("longitude")longitude:String
     ):Observable<PropertyAddResponse>
 
+    @GET("pro_mgt_add_tenants.php")
+    fun addTennant(@Query("name")name:String,
+                   @Query("email")email:String,
+                   @Query("address")address:String,
+                   @Query("mobile")mobile:String,
+                   @Query("propertyid")propertyid:String,
+                   @Query("landlordid")landlordid:String
+    ):Observable<Any>
+
 
     @GET("remove-property.php")
     fun removeProperty(

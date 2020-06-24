@@ -147,29 +147,19 @@
                 android:padding="10dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <EditText
-            android:text="@={FragmentViewModel.propertyAdd.mortage_info}"
-            android:id="@+id/edit_text_mortage"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:ems="10"
-            android:gravity="start|top"
-            android:hint="Mortage Info"
-            android:inputType="textMultiLine"
-            app:layout_constraintBottom_toTopOf="@+id/button_save_property"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_input_status" />
-
         <Button
-            android:onClick="@{FragmentViewModel::saveProperty}"
             android:id="@+id/button_save_property"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
+            android:background="@color/classicBlue"
+            android:onClick="@{FragmentViewModel::saveProperty}"
             android:text="Save Property"
+            android:textColor="#FFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_input_status"
+            app:layout_constraintVertical_bias="0.00999999" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

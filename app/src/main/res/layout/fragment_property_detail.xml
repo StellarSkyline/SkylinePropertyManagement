@@ -25,7 +25,7 @@
     </androidx.cardview.widget.CardView>
 
     <TextView
-        android:id="@+id/text_view_address"
+        android:id="@+id/text_view_address_pDetail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -36,7 +36,7 @@
         app:layout_constraintTop_toBottomOf="@+id/cardView2" />
 
     <TextView
-        android:id="@+id/text_view_address2"
+        android:id="@+id/text_view_address2_pDetail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -44,10 +44,10 @@
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_view_address" />
+        app:layout_constraintTop_toBottomOf="@+id/text_view_address_pDetail" />
 
     <TextView
-        android:id="@+id/text_view_status"
+        android:id="@+id/text_view_status_pDetail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -55,19 +55,20 @@
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_view_address2" />
+        app:layout_constraintTop_toBottomOf="@+id/text_view_address2_pDetail" />
 
     <TextView
-        android:id="@+id/text_view_description"
-        android:layout_width="wrap_content"
+        android:id="@+id/text_view_description_pDetail"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="TextView"
-        android:textSize="20dp"
+        android:textAlignment="center"
+        android:textSize="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_view_status" />
+        app:layout_constraintTop_toBottomOf="@+id/text_view_status_pDetail" />
 
     <Button
         android:id="@+id/button_add_tennant"

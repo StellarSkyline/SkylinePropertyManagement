@@ -13,7 +13,8 @@
         android:label="PropertiesFragment" >
         <action
             android:id="@+id/action_propertiesFragment_to_addProperty"
-            app:destination="@id/addProperty" />
+            app:destination="@id/addProperty"
+            app:popUpTo="@id/propertiesFragment" />
         <action
             android:id="@+id/action_propertiesFragment_to_fragmentPropertyDetail"
             app:destination="@id/fragmentPropertyDetail"
@@ -74,5 +75,19 @@
     <fragment
         android:id="@+id/fragmentPropertyDetail"
         android:name="com.example.skylinepropertymanagement.ui.fragment.FragmentPropertyDetail"
-        android:label="FragmentPropertyDetail" />
+        android:label="FragmentPropertyDetail" >
+        <action
+            android:id="@+id/action_fragmentPropertyDetail_to_fragmentAddTenant"
+            app:destination="@id/fragmentAddTenant"
+            app:popUpTo="@id/fragmentPropertyDetail" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentAddTenant"
+        android:name="com.example.skylinepropertymanagement.ui.fragment.FragmentAddTenant"
+        android:label="FragmentAddTenant" >
+        <action
+            android:id="@+id/action_fragmentAddTenant_to_fragmentPropertyDetail"
+            app:destination="@id/fragmentPropertyDetail"
+            app:popUpTo="@id/fragmentAddTenant" />
+    </fragment>
 </navigation>

@@ -8,6 +8,7 @@ import com.example.skylinepropertymanagement.app.Jump
 import com.example.skylinepropertymanagement.data.model.Document
 import com.example.skylinepropertymanagement.data.model.Meeting
 import com.example.skylinepropertymanagement.data.model.PropertyAdd
+import com.example.skylinepropertymanagement.data.model.User
 import com.example.skylinepropertymanagement.data.repo.FragmentRepo
 
 class FragmentViewModel:ViewModel() {
@@ -41,6 +42,15 @@ class FragmentViewModel:ViewModel() {
         x
     }
     val j by lazy{MutableLiveData<Boolean>()}
+
+    val tennant by lazy{
+        val x = MutableLiveData<User>()
+        x.value = User()
+        x
+    }
+
+    val propertyid by lazy{MutableLiveData<String>()}
+    val address by lazy{MutableLiveData<String>()}
 
 //================================Button Functions=========================================
     fun onButtonDocument(view:View) {
@@ -93,6 +103,25 @@ class FragmentViewModel:ViewModel() {
             return
         }
 
+    }
+
+    fun onClickAddTennant(view:View) {
+        if(tennant.value?.name.isNullOrEmpty()) {
+            inputVal.value = "name"
+            return
+        } else if(tennant.value?.email.isNullOrEmpty()) {
+            inputVal.value = "email"
+            return
+        } else if(tennant.value?.mobile.isNullOrEmpty()) {
+            inputVal.value = "mobile"
+            return
+        } else {
+            inputVal.value = "success"
+        }
+
+        if(!propertyid.value.isNullOrEmpty() && !address.value.isNullOrEmpty()) {
+            repo.addTennant(user = tennant, propertyid = propertyid.value!!, address = address.value!!)
+        }
     }
 
 

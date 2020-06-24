@@ -37,7 +37,7 @@
             app:layout_constraintTop_toTopOf="@+id/imageView7" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/text_layout_name"
+            android:id="@+id/text_layout_email"
             android:layout_width="409dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"

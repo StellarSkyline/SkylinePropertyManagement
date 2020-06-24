@@ -32,17 +32,17 @@ class RegisterActivity : AppCompatActivity() {
 
         viewModel.loginResult.observe(this, Observer<String> {
             text_layout_name.isErrorEnabled = false
-            text_layout_email.isErrorEnabled = false
+            text_layout_name.isErrorEnabled = false
             text_layout_mobile.isErrorEnabled = false
             text_layout_password.isErrorEnabled = false
             when(it) {
                 "name" -> {text_layout_name.error = "Name is required"}
-                "email" -> {text_layout_email.error = "Email is required"}
+                "email" -> {text_layout_name.error = "Email is required"}
                 "mobile" -> {text_layout_mobile.error = "Mobile is required"}
                 "password" -> {text_layout_password.error = "Password is required"}
                 "success" -> {
                     text_layout_name.isErrorEnabled = false
-                    text_layout_email.isErrorEnabled = false
+                    text_layout_name.isErrorEnabled = false
                     text_layout_mobile.isErrorEnabled = false
                     text_layout_password.isErrorEnabled = false
                     startActivity(Intent(this,LoginActivity::class.java))

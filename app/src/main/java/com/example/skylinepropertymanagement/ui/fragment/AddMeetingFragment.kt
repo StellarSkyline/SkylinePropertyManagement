@@ -36,11 +36,11 @@ class AddMeetingFragment:Fragment() {
 
         viewModel.inputVal.onlyNew(this).observe(viewLifecycleOwner, Observer {
             when(it) {
-                "name" -> {text_layout_name.error = "Meeting name is required"}
+                "name" -> {text_layout_email.error = "Meeting name is required"}
                 "location"->{text_input_location.error = "Location is required"}
                 "time" -> {text_input_time.error = "Time is required"}
                 "success" -> {
-                    text_layout_name.isErrorEnabled = false
+                    text_layout_email.isErrorEnabled = false
                     text_input_location.isErrorEnabled = false
                     text_input_time.isErrorEnabled = false
 

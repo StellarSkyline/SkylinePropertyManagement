@@ -9,10 +9,7 @@ import com.example.skylinepropertymanagement.data.SessionManager
 import com.example.skylinepropertymanagement.data.database.DB
 import com.example.skylinepropertymanagement.data.database.entity.MeetingTable
 import com.example.skylinepropertymanagement.data.database.entity.SavedDocuments
-import com.example.skylinepropertymanagement.data.model.Document
-import com.example.skylinepropertymanagement.data.model.Meeting
-import com.example.skylinepropertymanagement.data.model.Property
-import com.example.skylinepropertymanagement.data.model.PropertyAdd
+import com.example.skylinepropertymanagement.data.model.*
 import com.example.skylinepropertymanagement.data.network.ApiClient
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -116,6 +113,25 @@ class FragmentRepo {
         db.Dao().deleteMeeting(id)
 
     }
+
+
+    fun addTennant(user:MutableLiveData<User>, propertyid:String, address:String) {
+
+        val request = ApiClient.invoke().addTennant(name = user.value!!.name,email=user.value!!.email, address = address,mobile = user.value!!.mobile, landlordid = sm.getUserId(),propertyid = propertyid)
+
+        request.subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+
+                //Handle Response
+                App.instance.log(it.toString())
+            },{
+                App.instance.log(it.toString())
+            })
+
+    }
+
+
 
 
 }

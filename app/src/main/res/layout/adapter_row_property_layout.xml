@@ -25,7 +25,7 @@
             app:srcCompat="@drawable/img_house" />
 
         <TextView
-            android:id="@+id/text_view_address"
+            android:id="@+id/text_view_address_pDetail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="37dp"
@@ -50,7 +50,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.29"
             app:layout_constraintStart_toEndOf="@+id/image_view_house"
-            app:layout_constraintTop_toBottomOf="@+id/text_view_address" />
+            app:layout_constraintTop_toBottomOf="@+id/text_view_address_pDetail" />
 
         <TextView
             android:id="@+id/text_view_price"

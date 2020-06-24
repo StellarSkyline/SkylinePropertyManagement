@@ -35,13 +35,13 @@ class LoginActivity : AppCompatActivity() {
         viewModel.typeSwitch.value = true
 
         viewModel.loginResult.observe(this, Observer<String> { t ->
-            text_layout_name.isErrorEnabled = false
+            text_layout_email.isErrorEnabled = false
             text_layout_password.isErrorEnabled = false
             when(t) {
-                "email" -> {text_layout_name.error = "Email is required"}
+                "email" -> {text_layout_email.error = "Email is required"}
                 "password" ->{text_layout_password.error = "Password is required"}
                 "success" -> {
-                    text_layout_name.isErrorEnabled = false
+                    text_layout_email.isErrorEnabled = false
                     text_layout_password.isErrorEnabled = false
                 }
             }

@@ -6,9 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.skylinepropertymanagement.R
-import com.example.skylinepropertymanagement.app.App
 import com.example.skylinepropertymanagement.app.Jump
-import com.example.skylinepropertymanagement.app.toast
 import com.example.skylinepropertymanagement.data.model.Property
 import kotlinx.android.synthetic.main.adapter_row_property_layout.view.*
 
@@ -35,7 +33,7 @@ class AdapterProperties(var mContext:Context):RecyclerView.Adapter<AdapterProper
     inner class ViewHolder(itemView: View):RecyclerView.ViewHolder(itemView) {
 
         fun bindView(item:Property) {
-            itemView.text_view_address.text = item.propertyaddress
+            itemView.text_view_address_pDetail.text = item.propertyaddress
             itemView.text_view_city.text = item.propertycity
             itemView.text_view_price.text = item.propertypurchaseprice
             itemView.image_view_house.setImageResource(R.drawable.img_house)
