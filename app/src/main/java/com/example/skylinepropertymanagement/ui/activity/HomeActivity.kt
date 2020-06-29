@@ -73,7 +73,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
-            R.id.nav_alert -> { navController.navigate(R.id.action_global_alertFragment)}
+//            R.id.nav_alert -> { navController.navigate(R.id.action_global_alertFragment)}
             R.id.nav_document -> {navController.navigate(R.id.action_global_documentsFragment)}
             R.id.nav_properties ->{navController.navigate(R.id.action_global_propertiesFragment)}
             R.id.nav_meetings -> {navController.navigate(R.id.action_global_meetingFragment)}
