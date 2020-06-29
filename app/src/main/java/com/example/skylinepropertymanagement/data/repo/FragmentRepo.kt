@@ -1,5 +1,6 @@
 package com.example.skylinepropertymanagement.data.repo
 
+import android.content.SharedPreferences
 import androidx.lifecycle.MutableLiveData
 import com.example.skylinepropertymanagement.app.App
 import com.example.skylinepropertymanagement.app.Jump
@@ -13,9 +14,15 @@ import com.example.skylinepropertymanagement.data.model.*
 import com.example.skylinepropertymanagement.data.network.ApiClient
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import javax.inject.Inject
+import javax.inject.Named
 
 class FragmentRepo {
-    val sm = SessionManager()
+    @Inject
+    @field:Named("user")
+    lateinit var sm:SessionManager
+
+    //val sm = SessionManager()
     val db = DB.createDatabase(App.instance)
 
     val propertyData by lazy{ MutableLiveData<List<Property>>()}
