@@ -2,6 +2,7 @@ package com.example.skylinepropertymanagement.data.dagger.component
 
 import androidx.fragment.app.Fragment
 import com.example.skylinepropertymanagement.data.dagger.module.AppModule
+import com.example.skylinepropertymanagement.data.repo.AuthRepo
 import com.example.skylinepropertymanagement.data.repo.FragmentRepo
 import dagger.Component
 import javax.inject.Singleton
@@ -12,4 +13,5 @@ interface AppComponent {
 
     //Dependency Graph
     fun inject(Class:FragmentRepo)
+    fun inject(Class:AuthRepo)
 }

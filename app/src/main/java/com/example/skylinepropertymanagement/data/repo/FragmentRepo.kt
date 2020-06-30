@@ -22,7 +22,10 @@ class FragmentRepo {
     @field:Named("user")
     lateinit var sm:SessionManager
 
-    //val sm = SessionManager()
+    @Inject
+    @field:Named("api")
+    lateinit var request:ApiClient
+
     val db = DB.createDatabase(App.instance)
 
     val propertyData by lazy{ MutableLiveData<List<Property>>()}
@@ -34,9 +37,9 @@ class FragmentRepo {
     fun getProperties() {
         //change userID to sm.getUserId()
         //change userType to sm.getUserType()
-        var request = ApiClient.invoke().getAllProperties()
+        //var request = ApiClient.invoke().getAllProperties()
 
-        request.subscribeOn(Schedulers.io())
+        request.getAllProperties().subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
                 propertyData.value = it.Property
@@ -48,7 +51,6 @@ class FragmentRepo {
 
             })
 
-
     }
 
     fun saveDocument(document:MutableLiveData<Document>) {
@@ -56,7 +58,7 @@ class FragmentRepo {
     }
 
     fun addProperty(property:MutableLiveData<PropertyAdd>) {
-        var request = ApiClient.invoke().addProperty(address = property.value?.address!!,
+        request.addProperty(address = property.value?.address!!,
             city = property.value?.city!!,
             state = property.value?.state!!,
             country = property.value?.country!!,
@@ -66,9 +68,7 @@ class FragmentRepo {
             userid = sm.getUserId(),
             usertype = sm.getType(),
             latitude = property.value?.Latitude!!,
-            longitude = property.value?.longitude!!)
-
-        request.subscribeOn(Schedulers.io())
+            longitude = property.value?.longitude!!).subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
                 App.instance.toast(it.msg.toString())
@@ -77,11 +77,13 @@ class FragmentRepo {
             },{
                 App.instance.log(it.toString())
             })
+
+
     }
 
     fun getPropertyList() {
-        var request = ApiClient.invoke().properties(userId = sm.getUserId(), userType = sm.getType())
-        request.subscribeOn(Schedulers.io())
+        request.properties(userId = sm.getUserId(), userType = sm.getType())
+            .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
                 propertyData.value = it.Property
@@ -93,9 +95,8 @@ class FragmentRepo {
     }
 
     fun deleteProperty(propertyid:String) {
-        var request = ApiClient.invoke().removeProperty(propertyid = propertyid)
-
-        request.subscribeOn(Schedulers.io())
+        request.removeProperty(propertyid = propertyid)
+            .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
                 App.instance.toast(it.toString())
@@ -125,9 +126,8 @@ class FragmentRepo {
 
     fun addTennant(user:MutableLiveData<User>, propertyid:String, address:String) {
 
-        val request = ApiClient.invoke().addTennant(name = user.value!!.name,email=user.value!!.email, address = address,mobile = user.value!!.mobile, landlordid = sm.getUserId(),propertyid = propertyid)
-
-        request.subscribeOn(Schedulers.io())
+        request.addTennant(name = user.value!!.name,email=user.value!!.email, address = address,mobile = user.value!!.mobile, landlordid = sm.getUserId(),propertyid = propertyid)
+            .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
                 App.instance.log(it.toString())
@@ -143,9 +143,8 @@ class FragmentRepo {
     }
 
     fun getTennant(){
-        val request = ApiClient.invoke().getTennant(sm.getUserId())
-
-        request.subscribeOn(Schedulers.io())
+        request.getTennant(sm.getUserId())
+            .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
 

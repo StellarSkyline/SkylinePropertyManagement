@@ -64,15 +64,15 @@ interface ApiClient {
 
 
 
-    companion object {
-        operator fun invoke():ApiClient {
-            return Retrofit.Builder()
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .addCallAdapterFactory(CoroutineCallAdapterFactory())
-                .addConverterFactory(GsonConverterFactory.create(GsonBuilder().setLenient().create()))
-                .baseUrl(Config.BASE_URL)
-                .build()
-                .create(ApiClient::class.java)
-        }
-    }
+//    companion object {
+//        operator fun invoke():ApiClient {
+//            return Retrofit.Builder()
+//                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+//                .addCallAdapterFactory(CoroutineCallAdapterFactory())
+//                .addConverterFactory(GsonConverterFactory.create(GsonBuilder().setLenient().create()))
+//                .baseUrl(Config.BASE_URL)
+//                .build()
+//                .create(ApiClient::class.java)
+//        }
+//    }
 }

@@ -11,13 +11,20 @@ import com.example.skylinepropertymanagement.data.model.User
 import com.example.skylinepropertymanagement.data.network.ApiClient
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import javax.inject.Inject
+import javax.inject.Named
 
 class AuthRepo {
 
+    @Inject
+    @field:Named("api")
+    lateinit var req:ApiClient
+
+
     //Sample test
     fun login(user:MutableLiveData<User>){
-        var request = ApiClient.invoke().login(email = user.value!!.email, password=user.value!!.password)
-        request.subscribeOn(Schedulers.io())
+        req.login(email = user.value!!.email, password=user.value!!.password)
+            .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
 
@@ -58,9 +65,8 @@ class AuthRepo {
 
     //sample Register
     fun register(user:MutableLiveData<User>) {
-        var request = ApiClient.invoke().register(email = user.value!!.email, landEmail = user.value!!.email,password = user.value!!.password, account = user.value!!.type)
-
-        request.subscribeOn(Schedulers.io())
+        req.register(email = user.value!!.email, landEmail = user.value!!.email,password = user.value!!.password, account = user.value!!.type)
+            .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
                 when(it.toString()) {
