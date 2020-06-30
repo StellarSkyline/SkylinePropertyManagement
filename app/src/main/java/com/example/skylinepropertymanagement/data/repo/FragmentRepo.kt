@@ -26,18 +26,27 @@ class FragmentRepo {
     @field:Named("api")
     lateinit var request:ApiClient
 
-    val db = DB.createDatabase(App.instance)
+    @Inject
+    @field:Named("data")
+    lateinit var db:DB
+
+    //val db = DB.createDatabase(App.instance)
 
     val propertyData by lazy{ MutableLiveData<List<Property>>()}
     val meetingData by lazy{MutableLiveData<List<Meeting>>()}
     val tennant by lazy{MutableLiveData<List<Tennant>>()}
 
+    init {
+        //App.instance.getMyComponent().inject(this)
+        App.component.inject(this)
+    }
 
 
     fun getProperties() {
         //change userID to sm.getUserId()
         //change userType to sm.getUserType()
         //var request = ApiClient.invoke().getAllProperties()
+
 
         request.getAllProperties().subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

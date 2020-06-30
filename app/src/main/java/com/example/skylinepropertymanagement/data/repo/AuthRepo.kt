@@ -20,9 +20,14 @@ class AuthRepo {
     @field:Named("api")
     lateinit var req:ApiClient
 
+    init {
+        //Dependencies will work after this line
+        App.component.inject(this)
+    }
 
     //Sample test
     fun login(user:MutableLiveData<User>){
+
         req.login(email = user.value!!.email, password=user.value!!.password)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
